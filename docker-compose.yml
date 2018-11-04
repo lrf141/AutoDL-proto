@@ -24,8 +24,8 @@ services:
             - ./docker/mysql:/var/lib/mysql
         environment:
             - MYSQL_ROOT_PASSWORD=root
-            - MYSQL_USER=sample
-            - MYSQL_PASSWORD=sample
-            - MYSQL_DATABASE=sample
+            - MYSQL_USER=pawn
+            - MYSQL_PASSWORD=kingsgambit
+            - MYSQL_DATABASE=gambit
         ports:
             - 3306:3306
