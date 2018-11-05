@@ -7,7 +7,6 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Aws\S3\S3Client;
 
-
 class IncludeAllDataset extends Command
 {
     /**
@@ -41,7 +40,6 @@ class IncludeAllDataset extends Command
      */
     public function handle()
     {
-
         $s3Client = new S3Client([
             'credentials' => [
                 'key' => env('S3_ACCESSKEY'),
@@ -51,8 +49,7 @@ class IncludeAllDataset extends Command
             'version' => 'latest',
         ]);
 
-        try{
-
+        try {
             $result = $s3Client->getObject([
                 'Bucket' => env('S3_BUCKET'),
                 'Key' => 'iris.json',
@@ -62,10 +59,8 @@ class IncludeAllDataset extends Command
 
             DB::insert('insert into lists (`name`, `desc`, created_at, updated_at) values (?, ?, now(), now());', [$json->name, 'Irisのデータ・セット']);
             DB::insert('insert into datasets (`name`, json, created_at, updated_at) values (?, ?, now(), now());', [$json->name, trim($result['Body'])]);
-
-        }catch (S3Exception $e){
+        } catch (S3Exception $e) {
             echo $e->getMessage();
         }
-
     }
 }

@@ -11,5 +11,4 @@ class DatasetModel extends Model
     {
         return DB::select('select * from datasets where `name` = ?', [$name]);
     }
-
 }
