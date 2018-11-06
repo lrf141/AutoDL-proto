@@ -97,7 +97,7 @@
                 <div class="links">
                     @auth
                         <a href="{{ route('dataset') }}">Dataset</a>
-                        <a href="">Learn</a>
+                        <a href="{{ route('learn') }}">Learn</a>
                         <a href="">About</a>
                     @else
                     @endauth
