@@ -7,7 +7,12 @@ use Illuminate\Support\Facades\DB;
 
 class DatasetModel extends Model
 {
-    public static function getByName(string $name)
+
+    /**
+     * @param string $name
+     * @return array
+     */
+    public static function getByName(string $name) : array
     {
         return DB::select('select * from datasets where `name` = ?', [$name]);
     }
