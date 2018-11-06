@@ -31,7 +31,6 @@ class DatasetController extends Controller
      */
     public function index()
     {
-        var_dump(DatasetModel::getByName('iris'));
         return view('dataset', ['data'=>DatasetModel::getByName('iris')]);
     }
 }
