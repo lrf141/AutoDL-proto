@@ -24,4 +24,12 @@ class DatasetModel extends Model
     {
         return DB::select('select * from datasets');
     }
+
+    /**
+     * @return array
+     */
+    public static function getAllDatasetNames() : array
+    {
+        return DB::select('select `name` from datasets');
+    }
 }

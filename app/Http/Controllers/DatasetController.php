@@ -26,11 +26,10 @@ class DatasetController extends Controller
 
     /**
      * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        return view('dataset', ['data'=>ListsModel::getAllLists()]);
+        return view('dataset', ['data' => ListsModel::getAllLists()]);
     }
 }

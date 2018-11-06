@@ -6,6 +6,7 @@
  */
 
 require('./bootstrap');
+require('./coding');
 
 window.Vue = require('vue');
 
@@ -16,7 +17,8 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
-Vue.component('code-area', require('./components/codearea.vue'));
+//Vue.component('code-area', require('./components/codearea.vue'));
+//Vue.component('code-area', require('./components/CodeAreaTemp.vue'));
 
 const app = new Vue({
     el: '#app'

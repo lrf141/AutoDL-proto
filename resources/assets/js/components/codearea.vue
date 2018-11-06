@@ -1,5 +1,5 @@
 <template>
-    <editor v-model="content" @init="editorInit" lang="python" theme="chrome" style="width: 100%; height: 500px;"></editor>
+    <editor v-model="content" @init="editorInit" lang="python" theme="chrome" style="width: 100%; height: 500px;">hello</editor>
 </template>
 
 <script>

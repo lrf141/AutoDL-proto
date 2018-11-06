@@ -8,20 +8,23 @@
                     <div class="card-header">Learn</div>
 
                     <div class="card-body">
-                        <div class="card-columns">
-                            <div class="card-text">
-                                Select Datasets:
-                                <select id="dataset">
-                                    @foreach($data as $item)
-                                        <option value="{{ $item->name }}" id="{{ $item->name }}">{{ $item->name }}</option>
-                                    @endforeach
-                                </select>
+                        <form action="{{ url('/learn/send') }}" method="post">
+                            {{ csrf_field() }}
+                            <div class="card-columns">
+                                <div class="card-text">
+                                    Select Datasets:
+                                    <select id="dataset" name="dataset">
+                                        @foreach($data as $item)
+                                            <option value="{{ $item->name }}" id="{{ $item->name }}">{{ $item->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <code-area></code-area>
-                        <div class="card-group">
-                            <input type="submit" class="btn-light" value="submit"/>
-                        </div>
+                            <textarea id="coding" name="coding" style="height: 400px;width: 100%;"></textarea>
+                            <div class="card-group">
+                                <input type="submit" class="btn-light" value="submit"/>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
