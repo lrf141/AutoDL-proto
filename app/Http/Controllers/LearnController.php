@@ -50,6 +50,4 @@ class LearnController extends Controller
         }
         return view('submit', ['type' => $type, 'code' => $code]);
     }
-
-
 }
