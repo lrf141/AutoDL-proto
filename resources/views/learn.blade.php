@@ -8,7 +8,7 @@
                     <div class="card-header">Learn</div>
 
                     <div class="card-body">
-                        <form action="{{ url('/learn/send') }}" method="post">
+                        <form action="{{ url('/learn/submit') }}" method="post">
                             {{ csrf_field() }}
                             <div class="card-columns">
                                 <div class="card-text">

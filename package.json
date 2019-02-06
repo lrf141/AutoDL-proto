@@ -21,6 +21,7 @@
     },
     "dependencies": {
         "highlight.js": "^9.13.1",
+        "socket.io": "^2.2.0",
         "vue2-ace-editor": "^0.0.11"
     }
 }
