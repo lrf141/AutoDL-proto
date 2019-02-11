@@ -45,7 +45,7 @@ class LearnController extends Controller
     public function submit(Request $request)
     {
         // transaction id
-        $xid = (string)microtime();
+        $xid = (string)time();
 
         $type = $request->dataset;
         $code = $request->coding;
@@ -66,9 +66,7 @@ class LearnController extends Controller
             //add error handler
             return;
         }
-
-        return view('submit', ['xid' => $xid]);
-        //return redirect()->route('learn-result', ['xid' => $xid]);
+        return redirect()->route('learn-result', ['xid' => $xid]);
     }
 
     public function result(Request $request)
