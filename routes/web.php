@@ -22,3 +22,4 @@ Route::get('/dataset', 'DatasetController@index')->name('dataset');
 Route::get('/learn', 'LearnController@index')->name('learn');
 
 Route::post('/learn/submit', 'LearnController@submit')->name('learn-submit');
+Route::get('/learn/result', 'LearnController@result')->name('learn-result');

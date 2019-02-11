@@ -9,9 +9,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\DatasetModel;
-use function GuzzleHttp\Psr7\str;
+use GuzzleHttp\Psr7\str;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Zjango\Laracurl\Facades\Laracurl;
 
 class LearnController extends Controller
 {
@@ -44,7 +45,7 @@ class LearnController extends Controller
     public function submit(Request $request)
     {
         // transaction id
-        $xid = str(microtime());
+        $xid = (string)microtime();
 
         $type = $request->dataset;
         $code = $request->coding;
@@ -53,19 +54,26 @@ class LearnController extends Controller
             throw new \UnexpectedValueException('unexpected http request');
         }
 
+        $path = 'add';
+
         $client = new \GuzzleHttp\Client([
-            'base_uri' => env(GPU_URL, 'http://localhost:9000')
+            'base_uri' => 'http://172.30.0.1:9001/',
         ]);
 
-        $path = '/add';
-
         $response = $client->request('POST', $path, ['json' => ['xid' => $xid, 'code' => $code]]);
-
+        error_log($response->getBody());
         if ($response->getStatusCode() != 200) {
             //add error handler
             return;
         }
 
+        return view('submit', ['xid' => $xid]);
+        //return redirect()->route('learn-result', ['xid' => $xid]);
+    }
+
+    public function result(Request $request)
+    {
+        $xid = $request->input('xid');
         return view('submit', ['xid' => $xid]);
     }
 }
