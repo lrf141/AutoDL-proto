@@ -22,13 +22,10 @@
         //using local setting
         const socket = io('ws://172.30.0.1:8000');
         const chName = document.getElementById('xid').dataset.xid;
-        //console.log(socket);
-        console.log(chName);
         socket.emit('register', {xid: chName});
         socket.on('process-message', (msg) => {
             console.log(msg);
             document.getElementById('process-box').innerHTML += msg.body;
-            //document.getElementById('process-box').insertAdjacentElement('afterbegin', "<p>"+msg+"</p>");
         });
     </script>
 @endsection

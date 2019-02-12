@@ -16,3 +16,4 @@ docker/mysql/
 docker/nginx/logs
 *.clover
 /build
+.php_cs.cache

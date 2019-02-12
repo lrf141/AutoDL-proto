@@ -9,7 +9,6 @@
 
                     <div class="card-body">
                         <form action="{{ url('/learn/submit') }}" method="post">
-                            @csrf
                             {{ csrf_field() }}
                             <div class="card-columns">
                                 <div class="card-text">
