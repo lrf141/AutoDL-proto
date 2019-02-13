@@ -12,7 +12,6 @@ use App\Models\DatasetModel;
 use GuzzleHttp\Psr7\str;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Zjango\Laracurl\Facades\Laracurl;
 
 class LearnController extends Controller
 {
@@ -44,15 +43,19 @@ class LearnController extends Controller
      */
     public function submit(Request $request)
     {
+
+        if (!$request->has('coding') || !$request->has('dataset')) {
+            throw new \UnexpectedValueException('unexpected http request');
+        }
+
+        if (!in_array($request->dataset, $this->datasets)) {
+            throw new \UnexpectedValueException('unexpected http request');
+        }
+
         // transaction id
         $xid = (string) time();
 
-        $type = $request->dataset;
         $code = $request->coding;
-
-        if (is_null($code) || array_search($type, $this->datasets)) {
-            throw new \UnexpectedValueException('unexpected http request');
-        }
 
         $path = 'add';
 
@@ -61,9 +64,8 @@ class LearnController extends Controller
         ]);
 
         $response = $client->request('POST', $path, [ 'json' => [ 'xid' => $xid, 'code' => $code ] ]);
-        error_log($response->getBody());
         if ($response->getStatusCode() != 200) {
-            throw new \UnexpectedValueException('unexpected http response');
+            throw new \UnexpectedValueException('unexpected http response: ');
         }
         return redirect()->route('learn-result', [ 'xid' => $xid ]);
     }
