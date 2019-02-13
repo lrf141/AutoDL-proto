@@ -40,7 +40,7 @@ class LearnController extends Controller
 
     /**
      * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function submit(Request $request)
     {
@@ -63,12 +63,15 @@ class LearnController extends Controller
         $response = $client->request('POST', $path, ['json' => ['xid' => $xid, 'code' => $code]]);
         error_log($response->getBody());
         if ($response->getStatusCode() != 200) {
-            //add error handler
-            return;
+            throw new \UnexpectedValueException('unexpected http response');
         }
         return redirect()->route('learn-result', ['xid' => $xid]);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\View\View
+     */
     public function result(Request $request)
     {
         $xid = $request->input('xid');
