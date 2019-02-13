@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\User;
 use Tests\TestCase;
+use GuzzleHttp\Client;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -38,7 +39,7 @@ class LearnControllerTest extends TestCase
             ->once()
             ->andReturn($jsonMock);
 
-        $response = $this->actingAs($user)->post('/learn/submit?dataset=a&coding=a');
+        $response = $this->actingAs($user)->post('/learn/submit?dataset=1&coding=a');
 
         // /learn/result => expected
         // /learn/result?xid=12345 => actual
