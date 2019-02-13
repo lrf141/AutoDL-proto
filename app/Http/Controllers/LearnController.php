@@ -18,7 +18,7 @@ class LearnController extends Controller
 {
 
     /** @var array  */
-    private $datasets = ['iris'];
+    private $datasets = [ 'iris' ];
 
     /**
      * Create a new controller instance.
@@ -35,7 +35,7 @@ class LearnController extends Controller
      */
     public function index()
     {
-        return view('learn', ['data'=>DatasetModel::getAllDatasetNames()]);
+        return view('learn', [ 'data'=>DatasetModel::getAllDatasetNames() ]);
     }
 
     /**
@@ -45,7 +45,7 @@ class LearnController extends Controller
     public function submit(Request $request)
     {
         // transaction id
-        $xid = (string)time();
+        $xid = (string) time();
 
         $type = $request->dataset;
         $code = $request->coding;
@@ -60,12 +60,12 @@ class LearnController extends Controller
             'base_uri' => 'http://172.30.0.1:9001/',
         ]);
 
-        $response = $client->request('POST', $path, ['json' => ['xid' => $xid, 'code' => $code]]);
+        $response = $client->request('POST', $path, [ 'json' => [ 'xid' => $xid, 'code' => $code ] ]);
         error_log($response->getBody());
         if ($response->getStatusCode() != 200) {
             throw new \UnexpectedValueException('unexpected http response');
         }
-        return redirect()->route('learn-result', ['xid' => $xid]);
+        return redirect()->route('learn-result', [ 'xid' => $xid ]);
     }
 
     /**
@@ -75,6 +75,6 @@ class LearnController extends Controller
     public function result(Request $request)
     {
         $xid = $request->input('xid');
-        return view('submit', ['xid' => $xid]);
+        return view('submit', [ 'xid' => $xid ]);
     }
 }
