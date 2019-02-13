@@ -45,7 +45,6 @@ class LearnController extends Controller
     {
 
         if (!$request->has('coding') || !$request->has('dataset')) {
-
             throw new \UnexpectedValueException('unexpected http request');
         }
 
