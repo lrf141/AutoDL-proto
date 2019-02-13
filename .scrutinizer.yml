@@ -11,7 +11,7 @@ build:
       APP_URL: 'http://laravel.dev'
       API_HOST: 'laravel.dev'
       DB_HOST: '127.0.0.1'
-      DB_DATABASE: 'scrutinizer'
+      DB_DATABASE: 'testing'
       DB_USERNAME: 'root'
       DB_PASSWORD: ''
       MAIL_DRIVER: 'log'
@@ -22,7 +22,7 @@ build:
     - ~/.composer/cache/
   dependencies:
     before:
-    - mysql -uroot -e 'CREATE DATABASE scrutinizer'
+    - mysql -uroot -e 'CREATE DATABASE testing'
   tests:
     before:
     - chmod -R 777 storage

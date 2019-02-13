@@ -5,8 +5,11 @@ php:
 
 before_script:
     - cp .env.travis .env
+    - mysql -e 'create database testing;'
     - composer self-update
     - composer install --no-interaction
+    - php artisan key:generate
+    - php artisan migrate
 
 script:
     - ./vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
@@ -14,3 +17,8 @@ script:
 after_script:
     - if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then wget https://scrutinizer-ci.com/ocular.phar; fi
     - if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then php ocular.phar code-coverage:upload --format=php-clover coverage.clover; fi
+
+cache:
+  directories:
+    - node_modules
+    - vendor
