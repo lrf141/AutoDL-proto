@@ -53,7 +53,7 @@ class LearnController extends Controller
         }
 
         // transaction id
-        $xid = (string) time();
+        $xid = uniqid((string)rand());
 
         $code = $request->coding;
 
