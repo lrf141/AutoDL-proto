@@ -25,7 +25,7 @@
         socket.emit('register', {xid: chName});
         socket.on('process-message', (msg) => {
             console.log(msg);
-            document.getElementById('process-box').innerHTML += msg.body;
+            document.getElementById('process-box').innerHTML += msg.body + '<br>';
         });
     </script>
 @endsection
