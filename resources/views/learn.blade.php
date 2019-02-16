@@ -32,6 +32,7 @@
                                     enableLiveAutocompletion: true
                                 });
                                 editor.setFontSize(14);
+                                editor.setTheme("ace/theme/eclipse");
                                 editor.getSession().setMode("ace/mode/python");
                                 editor.getSession().setUseWrapMode(false);
 
