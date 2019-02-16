@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -20,7 +20,26 @@
                                     </select>
                                 </div>
                             </div>
-                            <textarea id="coding" name="coding" style="height: 400px;width: 100%;"></textarea>
+                            <div id="editor" style="height: 600px;width: 100%;">
+                            </div>
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ace.js"></script>
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ext-language_tools.js"></script>
+                            <script>
+                                let editor = ace.edit("editor");
+                                editor.setOptions({
+                                    enableBasicAutocompletion: true,
+                                    enableSnippets: true,
+                                    enableLiveAutocompletion: true
+                                });
+                                editor.setFontSize(14);
+                                editor.getSession().setMode("ace/mode/python");
+                                editor.getSession().setUseWrapMode(false);
+
+                                editor.on("change", (obj) => {
+                                   document.getElementById('coding').value = editor.getSession().getValue();
+                                });
+                            </script>
+                            <textarea id="coding" name="coding" hidden></textarea>
                             <div class="card-group">
                                 <input type="submit" class="btn-light" value="submit"/>
                             </div>
@@ -31,9 +50,3 @@
         </div>
     </div>
 @endsection
-<script>
-    import Codearea from "../assets/js/components/codearea";
-    export default {
-        components: {Codearea}
-    }
-</script>

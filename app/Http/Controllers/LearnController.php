@@ -55,7 +55,7 @@ class LearnController extends Controller
         // transaction id
         $xid = uniqid((string)rand());
 
-        $code = $request->coding;
+        $code = mb_convert_encoding((string)$request->coding, 'UTF-8');
 
         $path = 'add';
 

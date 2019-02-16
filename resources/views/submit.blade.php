@@ -4,12 +4,13 @@
 
 @section('content')
     <div id="xid" data-xid="{{$xid}}"></div>
-    <div class="container">
-        <div class="row justify-content-center">
+    <div class="container-fluid" style="min-height: 100%;">
+        <div class="row justify-content-around">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Submit</div>
-                    <div class="card-body" id="process-box">
+                    <div class="card-body">
+                        <textarea id="process-box" rows="25" style="overflow: scroll;width: 100%;"></textarea>
                     </div>
                 </div>
             </div>
@@ -25,7 +26,7 @@
         socket.emit('register', {xid: chName});
         socket.on('process-message', (msg) => {
             console.log(msg);
-            document.getElementById('process-box').innerHTML += msg.body + '<br>';
+            document.getElementById('process-box').value += msg.body + '\n';
         });
     </script>
 @endsection
