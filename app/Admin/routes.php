@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Routing\Router;
+use Encore\Admin\Facades\Admin;
 
 Admin::registerAuthRoutes();
 
