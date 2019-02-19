@@ -23,6 +23,7 @@ class CreateSubmitDataTable extends Migration
             $table->increments('id');
             $table->integer('userid')->nullable(false);
             $table->string('xid')->nulllable(false);
+            $table->string('desc')->default('');
             $table->timestamps();
         });
     }
