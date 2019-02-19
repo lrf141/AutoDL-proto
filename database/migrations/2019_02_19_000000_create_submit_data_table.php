@@ -19,7 +19,7 @@ class CreateSubmitDataTable extends Migration
      */
     public function up()
     {
-        Schema::create('submit', function (Blueprint $table) {
+        Schema::create('result', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('userid')->nullable(false);
             $table->string('xid')->nulllable(false);
