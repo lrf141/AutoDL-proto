@@ -14,6 +14,8 @@ yarn-error.log
 !.gitkeep
 docker/mysql/
 docker/nginx/logs
+docker/minio/data
+docker/minio/config
 *.clover
 /build
 .php_cs.cache
