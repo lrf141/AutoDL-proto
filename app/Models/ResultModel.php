@@ -102,10 +102,11 @@ class ResultModel extends Model
 
     /**
      * @param string $xid
-     * @return \Illuminate\Database\Query\Builder
+     * @return Model|\Illuminate\Database\Query\Builder|object|null
      */
     public static function getResultValuesByXid(string $xid)
     {
-        return DB::table('value')->where('xid', 'list', $xid.'%');
+        //need validation
+        return DB::table('value')->where('xid', 'like', $xid.'%')->first();
     }
 }

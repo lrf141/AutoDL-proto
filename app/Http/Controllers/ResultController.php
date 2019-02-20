@@ -50,7 +50,9 @@ class ResultController extends Controller
         }
 
         $detail = ResultModel::getResultDetails($xid);
+        $data = ResultModel::getResultValuesByXid($xid);
+        $values = json_decode($data->meta);
 
-        return view('detail', ['meta' => $meta, 'detail' => $detail]);
+        return view('detail-graph', ['meta' => $meta, 'detail' => $detail, "value" => $values]);
     }
 }
