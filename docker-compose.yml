@@ -55,3 +55,15 @@ services:
         MINIO_ACCESS_KEY: minio_access_key
         MINIO_SECRET_KEY: minio_secret_key
       command: server /export
+
+    createbuckets:
+      image: minio/mc
+      depends_on:
+        - minio
+      entrypoint: >
+        /bin/sh -c "
+        until (/usr/bin/mc config host add gambit http://minio:9000 minio_access_key minio_secret_key) do echo '...waiting...' && sleep 1; done;
+        /usr/bin/mc mb gambit/gambit;
+        /usr/bin/mc policy download gambit/gambit;
+        exit 0;
+        "
