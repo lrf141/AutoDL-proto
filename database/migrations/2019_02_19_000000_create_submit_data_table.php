@@ -36,6 +36,6 @@ class CreateSubmitDataTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('submit');
+        Schema::dropIfExists('result');
     }
 }
