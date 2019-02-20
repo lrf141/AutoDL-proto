@@ -28,13 +28,20 @@ class ResultController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         $result = ResultModel::getResultByUserId(Auth::user()->id);
         return view('result', ['results' => $result]);
     }
 
-    public function detail($xid)
+    /**
+     * @param string $xid
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function detail(string $xid)
     {
         $xid = substr($xid, 0, -1);
         $meta = ResultModel::getResultByTransactionId($xid);

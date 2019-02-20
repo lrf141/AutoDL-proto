@@ -86,4 +86,26 @@ class ResultModel extends Model
 
         return json_decode($result['Body']);
     }
+
+
+    /**
+     * @param string $xid
+     * @param string $metas
+     */
+    public static function setResultValues(string $xid, string $metas)
+    {
+        DB::table('value')->insert([
+            'xid' => $xid,
+            'meta' => $metas
+        ]);
+    }
+
+    /**
+     * @param string $xid
+     * @return \Illuminate\Database\Query\Builder
+     */
+    public static function getResultValuesByXid(string $xid)
+    {
+        return DB::table('value')->where('xid', 'list', $xid.'%');
+    }
 }
