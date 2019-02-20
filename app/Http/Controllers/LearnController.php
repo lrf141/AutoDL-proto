@@ -42,6 +42,7 @@ class LearnController extends Controller
     /**
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function submit(Request $request)
     {
@@ -73,6 +74,14 @@ class LearnController extends Controller
         $desc = $request->has('desc') ? (string)$request->desc : '';
 
         ResultModel::insertInfo(Auth::user()->id, $xid, $desc);
+
+        $json = [
+            'data_type' => $request->datasets,
+            'xid' => $xid,
+            'code' => $code
+        ];
+
+        ResultModel::setResultDetails($json);
 
         return redirect()->route('learn-result', [ 'xid' => $xid ]);
     }

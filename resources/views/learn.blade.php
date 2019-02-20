@@ -21,8 +21,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div id="editor" style="height: 600px;width: 100%;">
-                            </div>
+                            <div id="editor" style="height: 600px;width: 100%;"></div>
                             <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ace.js"></script>
                             <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ext-language_tools.js"></script>
                             <script>

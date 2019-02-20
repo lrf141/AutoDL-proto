@@ -36,11 +36,14 @@ class ResultController extends Controller {
 
     public function detail($xid)
     {
-        $xid = substr($xid, 0, -3);
+        $xid = substr($xid, 0, -1);
         $meta = ResultModel::getResultByTransactionId($xid);
         if ($meta === null) {
             return view('welcome');
         }
-        return view('detail', ['meta' => $meta]);
+
+        $detail = ResultModel::getResultDetails($xid);
+
+        return view('detail', ['meta' => $meta, 'detail' => $detail]);
     }
 }

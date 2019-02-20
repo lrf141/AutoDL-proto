@@ -39,4 +39,53 @@ class ResultModel extends Model
         return DB::table('result')->where('xid', 'like', $xid.'%')->first();
     }
 
+    /**
+     * @param array $result
+     * @param string $xid
+     */
+    public static function setResultDetails(array $result)
+    {
+        $s3 = new \Aws\S3\S3Client([
+            'version' => 'latest',
+            'region' => 'us-east-1',
+            'endpoint' => 'http://172.30.0.1:9000',
+            'use_path_style_endpoint' => true,
+            'credentials' => [
+                'key' => 'minio_access_key',
+                'secret' => 'minio_secret_key',
+            ],
+        ]);
+
+        $s3->putObject([
+            'Bucket' => 'gambit',
+            'Key' => $result['xid'].'.json',
+            'Body' => json_encode($result),
+        ]);
+    }
+
+    /**
+     * @param string $xid
+     * @return mixed
+     */
+    public static function getResultDetails(string $xid)
+    {
+        $s3 = new \Aws\S3\S3Client([
+            'version' => 'latest',
+            'region' => 'us-east-1',
+            'endpoint' => 'http://172.30.0.1:9000',
+            'use_path_style_endpoint' => true,
+            'credentials' => [
+                'key' => 'minio_access_key',
+                'secret' => 'minio_secret_key',
+            ],
+        ]);
+
+        $result = $s3->getObject([
+            'Bucket' => 'gambit',
+            'Key' => $xid.'.json'
+        ]);
+
+        return json_decode($result['Body']);
+    }
+
 }
