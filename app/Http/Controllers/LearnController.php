@@ -9,9 +9,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\DatasetModel;
+use App\Models\ResultModel;
 use GuzzleHttp\Psr7\str;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class LearnController extends Controller
 {
@@ -40,10 +42,10 @@ class LearnController extends Controller
     /**
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function submit(Request $request)
     {
-
         if (!$request->has('coding') || !$request->has('dataset')) {
             throw new \UnexpectedValueException('unexpected http request');
         }
@@ -53,7 +55,7 @@ class LearnController extends Controller
         }
 
         // transaction id
-        $xid = uniqid((string)rand());
+        $xid = uniqid('gambit_');
 
         $code = mb_convert_encoding((string)$request->coding, 'UTF-8');
 
@@ -67,6 +69,19 @@ class LearnController extends Controller
         if ($response->getStatusCode() != 200) {
             throw new \UnexpectedValueException('unexpected http response: ');
         }
+
+        $desc = $request->has('desc') ? (string)$request->desc : '';
+
+        ResultModel::insertInfo(Auth::user()->id, $xid, $desc);
+
+        $json = [
+            'data_type' => $request->datasets,
+            'xid' => $xid,
+            'code' => $code
+        ];
+
+        ResultModel::setResultDetails($json);
+
         return redirect()->route('learn-result', [ 'xid' => $xid ]);
     }
 

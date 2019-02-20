@@ -17,11 +17,11 @@
                                         @foreach($data as $item)
                                             <option value="{{ $item->name }}" id="{{ $item->name }}">{{ $item->name }}</option>
                                         @endforeach
+                                            <option value="iris" id="iris">iris</option>
                                     </select>
                                 </div>
                             </div>
-                            <div id="editor" style="height: 600px;width: 100%;">
-                            </div>
+                            <div id="editor" style="height: 600px;width: 100%;"></div>
                             <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ace.js"></script>
                             <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ext-language_tools.js"></script>
                             <script>
@@ -41,6 +41,7 @@
                                 });
                             </script>
                             <textarea id="coding" name="coding" hidden></textarea>
+                            description: <input type="text" id="desc" name="desc" style="width: 100%;"/>
                             <div class="card-group">
                                 <input type="submit" class="btn-light" value="submit"/>
                             </div>
