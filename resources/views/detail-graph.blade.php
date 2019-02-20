@@ -22,11 +22,15 @@
                             loss = loss.slice(1, -1).split(',');
                             let val_loss = document.getElementById('val_loss').innerHTML;
                             val_loss = val_loss.slice(1, -1).split(',');
+                            let len = [];
+                            for (let i = 0; i < loss.length; i++) {
+                                len.push(i);
+                            }
                             const ctx = document.getElementById("mychart").getContext('2d');
                             const myChart = new Chart(ctx, {
                                 type: 'line',
                                 data: {
-                                    labels: [1,2,3,4,5,6,7,8,9],
+                                    labels: len,
                                     datasets: [{
                                         label: 'loss',
                                         data: loss,
