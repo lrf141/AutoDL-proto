@@ -14,8 +14,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
-class ResultController extends Controller {
-
+class ResultController extends Controller
+{
     public $timestamp = true;
 
     /**

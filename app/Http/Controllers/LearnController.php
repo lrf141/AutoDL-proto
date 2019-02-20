@@ -46,7 +46,6 @@ class LearnController extends Controller
      */
     public function submit(Request $request)
     {
-
         if (!$request->has('coding') || !$request->has('dataset')) {
             throw new \UnexpectedValueException('unexpected http request');
         }

@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-
 class ResultModel extends Model
 {
 
@@ -87,5 +86,4 @@ class ResultModel extends Model
 
         return json_decode($result['Body']);
     }
-
 }
