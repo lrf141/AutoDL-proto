@@ -17,6 +17,7 @@
                                         @foreach($data as $item)
                                             <option value="{{ $item->name }}" id="{{ $item->name }}">{{ $item->name }}</option>
                                         @endforeach
+                                            <option value="iris" id="iris">iris</option>
                                     </select>
                                 </div>
                             </div>
@@ -41,6 +42,7 @@
                                 });
                             </script>
                             <textarea id="coding" name="coding" hidden></textarea>
+                            description: <input type="text" id="desc" name="desc" style="width: 100%;"/>
                             <div class="card-group">
                                 <input type="submit" class="btn-light" value="submit"/>
                             </div>

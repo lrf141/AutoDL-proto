@@ -23,3 +23,6 @@ Route::get('/learn', 'LearnController@index')->name('learn');
 
 Route::post('/learn/submit', 'LearnController@submit')->name('learn-submit');
 Route::get('/learn/result', 'LearnController@result')->name('learn-result');
+
+Route::get('/result', 'ResultController@index')->name('result');
+Route::get('/result/{xid}', 'ResultController@detail')->name('result-detail');
