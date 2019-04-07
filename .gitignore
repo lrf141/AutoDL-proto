@@ -19,3 +19,5 @@ docker/minio/config
 *.clover
 /build
 .php_cs.cache
+*.lock
+package-lock.json
