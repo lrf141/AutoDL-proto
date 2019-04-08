@@ -18,4 +18,6 @@ $ echo '' >> ./storage/logs/laravel.log
 $ sudo chmod 777 -R ./storage/ ./bootstrap/
 $ cp .env.example .env
 $ php artisan key:generate
+$ php artisan migrate
+$ php artisan admin:install
 ```
