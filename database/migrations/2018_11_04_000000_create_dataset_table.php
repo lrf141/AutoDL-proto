@@ -16,6 +16,7 @@ class CreateDatasetTable extends Migration
         Schema::create('datasets', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('desc');
             $table->text('json');
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
