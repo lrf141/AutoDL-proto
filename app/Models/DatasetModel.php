@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\DB;
 
 class DatasetModel extends Model
 {
-
     protected $table = 'datasets';
 
     /**
