@@ -83,6 +83,7 @@ class DatasetController extends Controller
 
         $grid->id('Id');
         $grid->name('Name');
+        $grid->desc('Desc');
         $grid->json('Json');
         $grid->created_at('Created at');
         $grid->updated_at('Updated at');
@@ -102,6 +103,7 @@ class DatasetController extends Controller
 
         $show->id('Id');
         $show->name('Name');
+        $show->desc('Desc');
         $show->json('Json');
         $show->created_at('Created at');
         $show->updated_at('Updated at');
@@ -119,6 +121,7 @@ class DatasetController extends Controller
         $form = new Form(new Dataset);
 
         $form->text('name', 'Name');
+        $form->text('desc', 'Desc');
         $form->textarea('json', 'Json');
 
         return $form;
