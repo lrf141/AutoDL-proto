@@ -8,8 +8,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ListsModel;
-use Illuminate\Http\Request;
+use App\Models\DatasetModel;
 
 class DatasetController extends Controller
 {
@@ -30,6 +29,6 @@ class DatasetController extends Controller
      */
     public function index()
     {
-        return view('dataset', ['data' => ListsModel::getAllLists()]);
+        return view('dataset', ['data' => DatasetModel::getAllDatasets()]);
     }
 }
