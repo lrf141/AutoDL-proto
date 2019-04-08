@@ -15,8 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dataset', 'DatasetController@index')->name('dataset');
 Route::get('/learn', 'LearnController@index')->name('learn');
@@ -26,3 +24,7 @@ Route::get('/learn/result', 'LearnController@result')->name('learn-result');
 
 Route::get('/result', 'ResultController@index')->name('result');
 Route::get('/result/{xid}', 'ResultController@detail')->name('result-detail');
+
+Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('/login', 'Auth\LoginController@login');
+Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
