@@ -22,24 +22,6 @@
                                 </div>
                             </div>
                             <div id="editor" style="height: 600px;width: 100%;"></div>
-                            <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ace.js"></script>
-                            <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ext-language_tools.js"></script>
-                            <script>
-                                let editor = ace.edit("editor");
-                                editor.setOptions({
-                                    enableBasicAutocompletion: true,
-                                    enableSnippets: true,
-                                    enableLiveAutocompletion: true
-                                });
-                                editor.setFontSize(14);
-                                editor.setTheme("ace/theme/eclipse");
-                                editor.getSession().setMode("ace/mode/python");
-                                editor.getSession().setUseWrapMode(false);
-
-                                editor.on("change", (obj) => {
-                                   document.getElementById('coding').value = editor.getSession().getValue();
-                                });
-                            </script>
                             <textarea id="coding" name="coding" hidden></textarea>
                             description: <input type="text" id="desc" name="desc" style="width: 100%;"/>
                             <div class="card-group">
@@ -51,4 +33,22 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ace.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ext-language_tools.js"></script>
+    <script type="text/javascript">
+        let editor = ace.edit("editor");
+        editor.setOptions({
+            enableBasicAutocompletion: true,
+            enableSnippets: true,
+            enableLiveAutocompletion: true
+        });
+        editor.setFontSize(14);
+        editor.setTheme("ace/theme/eclipse");
+        editor.getSession().setMode("ace/mode/python");
+        editor.getSession().setUseWrapMode(false);
+
+        editor.on("change", (obj) => {
+            document.getElementById('coding').value = editor.getSession().getValue();
+        });
+    </script>
 @endsection
