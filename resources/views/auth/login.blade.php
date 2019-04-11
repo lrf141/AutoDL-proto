@@ -12,7 +12,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('Username') }}</label>
+                            <label for="username" class="col-sm-4 col-form-label text-md-right">{{ __('Username') }}</label>
 
                             <div class="col-md-6">
                                 <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required autofocus>
@@ -48,6 +48,11 @@
                                         {{ __('Remember Me') }}
                                     </label>
                                 </div>
+                                @if ($errors->has('fails'))
+                                    <span class="form-check-label" role="alert" style="color: red; text-align: center;">
+                                        <strong>{{ $errors->first('fails') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 
