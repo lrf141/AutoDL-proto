@@ -59,6 +59,6 @@ class LoginController extends Controller
             return $this->sendLoginResponse($request);
         }
 
-        return redirect()->route('/login');
+        return back()->withInput()->withErrors(['fails' => 'Username or password is incorrect']);
     }
 }
