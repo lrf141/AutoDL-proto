@@ -50,7 +50,7 @@ class LearnController extends Controller
             throw new \UnexpectedValueException('unexpected http request');
         }
 
-        if (!in_array($request->dataset, $this->datasets)) {
+        if (!DatasetModel::checkExistDatasetByName($request->dataset)) {
             throw new \UnexpectedValueException('unexpected http request');
         }
 

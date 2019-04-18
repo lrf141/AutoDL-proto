@@ -33,4 +33,14 @@ class DatasetModel extends Model
     {
         return DB::select('select `name` from datasets');
     }
+
+
+    /**
+     * @param string $data
+     * @return bool
+     */
+    public static function checkExistDatasetByName(string $data) : bool
+    {
+        return DB::table('datasets')->where('name', $data)->exists();
+    }
 }
